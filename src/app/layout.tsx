@@ -1,6 +1,22 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import { Libre_Bodoni } from 'next/font/google'
+import { Nunito_Sans } from "next/font/google";
+
+const libre_Bodoni = Libre_Bodoni({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-Libre_Bodoni',
+})
+
+const nunito_Sans = Nunito_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-Nunito_Sans',
+})
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,10 +40,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${nunito_Sans.variable} ${libre_Bodoni.variable}`}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>
